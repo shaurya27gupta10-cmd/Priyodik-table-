@@ -1,45 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Anime.js Periodic Table Auto Layout animation</title>
-  <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Key Shop Inventory Pro</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <div class="controls">
-    <div class="controls-group display br">
-      <button class="is-active toggle" id="table">table</button>
-      <button class="toggle" id="sphere">sphere</button>
-      <button class="toggle" id="helix">helix</button>
-      <button class="toggle" id="grid">grid</button>
+  <header class="topbar">
+    <div>
+      <h1>Key Shop Inventory Pro</h1>
+      <p>Professional product tracking with Google ID approval workflow.</p>
     </div>
-  </div>
-  <div id="scene">
-    <div id="scene-content" data-layout="table"></div>
-  </div>
-  <div class="credits">
-    3D transform calculations ported from this three.js <a href="https://threejs.org/examples/css3d_periodictable.html"
-      target="_blank">demo</a>.
-  </div>
-  <template id="element">
-    <button class="element" data-color="0">
-      <div class="element-number"></div>
-      <div class="element-symbol"></div>
-      <div class="element-title"></div>
-      <div class="element-description"></div>
-    </button>
-  </template>
-  <script type="module" src="./script.js"></script>
+    <span class="admin-tag">Admin: shaurya27gupta10@gamil.com</span>
+  </header>
 
+  <main class="layout">
+    <section class="card" id="auth-card">
+      <h2>Google ID Verification</h2>
+      <p class="muted">Sign in with your Google email to continue.</p>
+      <form id="login-form" class="grid-form">
+        <label>
+          Full Name
+          <input id="user-name" type="text" placeholder="Enter your name" required />
+        </label>
+        <label>
+          Google Email ID
+          <input id="user-email" type="email" placeholder="name@gmail.com" required />
+        </label>
+        <button type="submit">Verify & Login</button>
+      </form>
+      <p id="auth-msg" class="status"></p>
+    </section>
+
+    <section class="card hidden" id="dashboard">
+      <div class="dashboard-head">
+        <div>
+          <h2>Inventory Dashboard</h2>
+          <p id="session-info" class="muted"></p>
+        </div>
+        <button id="logout-btn" class="ghost">Logout</button>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="panel-grid">
+        <section class="panel">
+          <h3>Add Product</h3>
+          <form id="add-form" class="grid-form two-col">
+            <label>Product Name<input id="p-name" required /></label>
+            <label>SKU<input id="p-sku" required /></label>
+            <label>Category<input id="p-category" placeholder="Door Lock / Key Blank" /></label>
+            <label>Opening Qty<input id="p-qty" type="number" min="1" required /></label>
+            <label>Reorder Level<input id="p-reorder" type="number" min="0" value="5" /></label>
+            <label>Image URL<input id="p-image" type="url" placeholder="https://..." /></label>
+            <label class="span-2">Notes<textarea id="p-notes" rows="2"></textarea></label>
+            <button class="span-2" type="submit">Add Product</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h3>Release Product</h3>
+          <form id="release-form" class="grid-form">
+            <label>Product
+              <select id="r-product" required></select>
+            </label>
+            <label>Release Qty<input id="r-qty" type="number" min="1" required /></label>
+            <label>Release To<input id="r-to" placeholder="Customer/Technician" required /></label>
+            <label>Purpose<input id="r-purpose" placeholder="Repair / New Installation" required /></label>
+            <button type="submit">Submit Release</button>
+          </form>
+          <p class="muted small">Non-admin releases require admin approval.</p>
+        </section>
+      </div>
+
+      <section class="panel">
+        <div class="row between">
+          <h3>Current Inventory</h3>
+          <input id="search" placeholder="Search by name, SKU, category" />
+        </div>
+        <div id="inventory-list" class="inventory-list"></div>
+      </section>
+
+      <section class="panel hidden" id="approval-panel">
+        <h3>Pending Release Approvals (Admin)</h3>
+        <div id="approval-list"></div>
+      </section>
+
+      <section class="panel">
+        <h3>Activity Log</h3>
+        <div id="log-list" class="log-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
-<div class="credits">
-  3D transform calculations ported from this three.js <a href="https://threejs.org/examples/css3d_periodictable.html"
-    target="_blank">demo</a>.<br>
-  <span class="vishesh-footer">Made with ❤️ by <a href="https://instagram.com/codingwithvishesh"
-      target="_blank">codingwithvishesh</a></span>
-</div>
-
 </html>
